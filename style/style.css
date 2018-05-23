@@ -1,0 +1,64 @@
+.symbol {
+    height: auto;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+.bg {
+    
+    background-color: rgba(255,171,64) !important;
+}
+
+
+.bg p {
+    color: white !important;
+}
+
+body  {
+    font-family: 'Roboto';
+}
+
+
+h2, h4 {
+    color: black;
+}
+
+.mdl-layout__header .mdl-layout__drawer-button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.page-content {
+    padding: 1em;
+    background-color: #fefefe;
+}
+
+.green {
+    font-weight: bold;
+    color: green;
+}
+.red {
+    font-weight: bold;
+    color: red;
+}
+.list {
+    width: 90%;
+}
+.tools {
+    padding: 1em;
+    color: #ffffff;
+}
+
+.rate {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.mdl-progress {
+    width: 100% !important;
+}
+.disclaimer {
+    background-color: #e0e0e0}
