@@ -7,12 +7,17 @@ window.addEventListener("load", function(e){
     }
 });
 
-var handler = function(event) {
-    
-  };
+
 
 window.addEventListener("online", function(e){
     UpdateOnlineStatus(true);
+    var snackbarContainer = document.querySelector('#demo-snackbar-example');
+    'use strict';
+    var data = {
+      message: 'Online',
+      timeout: 2000
+    };
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
 });
 
 window.addEventListener("offline", function(e){
@@ -21,9 +26,7 @@ window.addEventListener("offline", function(e){
     'use strict';
     var data = {
       message: 'Offline',
-      timeout: 2000,
-      actionHandler: handler,
-      actionText: 'Undo'
+      timeout: 2000
     };
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
 });
