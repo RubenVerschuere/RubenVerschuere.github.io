@@ -44,10 +44,10 @@ createSymbol = (json) => {
       return `
         <div class="symbol">
         <div>
-         <a> 
+
             <p>${json.disclaimer}</p>
             <p>Last updated: ${new Date(json.time.updated).toLocaleDateString()} / ${new Date(json.time.updated).toLocaleTimeString()}</p>
-         </a>
+     
          </div>
          <div>
             <p></p>
