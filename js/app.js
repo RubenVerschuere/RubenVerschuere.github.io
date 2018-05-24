@@ -43,6 +43,7 @@ updateCurrencies = async () => {
     updateLoader(true);
     const res = await fetch(`https://api.coindesk.com/v1/bpi/currentprice.json`);
     const json = await res.json();
+    console.log(json);
     let title = document.querySelector(".mdl-layout-title");
     title.innerHTML = json.chartName
     disclaimer.innerHTML = createSymbol(json);
@@ -113,7 +114,7 @@ createSymbol = (json) => {
         <div>
 
             <p>${json.disclaimer}</p>
-            <p>Last updated: ${new Date(json.time.updated).toLocaleDateString()} / ${new Date(json.time.updated).toLocaleTimeString()}</p>
+           
      
          </div>
          <div>
@@ -139,8 +140,8 @@ createCurrencie = (json) => {
       <div class="padding eurrate"> ${json.EUR.symbol} ${json.EUR.rate}</div>
     </div>
     <div class="cell-content">
-      <div class="padding">1</div>
-      <div class="padding">2</div>
+      <div class="padding">${json.EUR.description}</div>
+      <div class="padding"></div>
     </div>
 
   </div>
@@ -158,8 +159,8 @@ createCurrencie = (json) => {
     <div class="padding gbdrate"> ${json.GBP.symbol} ${json.GBP.rate}</div>
   </div>
   <div class="cell-content">
-    <div class="padding">1</div>
-    <div class="padding">2</div>
+    <div class="padding">${json.GBP.description}</div>
+    <div class="padding"></div>
   </div>
 
 </div>
@@ -177,8 +178,8 @@ createCurrencie = (json) => {
   <div class="padding usdrate"> ${json.USD.symbol} ${json.USD.rate}</div>
 </div>
 <div class="cell-content">
-  <div class="padding">1</div>
-  <div class="padding">2</div>
+  <div class="padding">${json.USD.description}</div>
+  <div class="padding"></div>
 </div>
 </div>
     `

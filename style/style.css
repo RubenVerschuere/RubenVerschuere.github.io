@@ -6,6 +6,7 @@
 .cell {
     background-color: #4a6572;
     color: white;
+    border-radius: 5px;
 }
 
 .cell-header {
