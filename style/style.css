@@ -1,33 +1,26 @@
-body {
-    font-family: 'Roboto Condensed', sans-serif !important;
 
-}
-
-.symbol {
-    height: auto;
+.padding {
     padding: 1em;
+}
+
+.cell {
+    background-color: #4a6572;
+    color: white;
+}
+
+.cell-header {
     display: flex;
-    flex-direction: row;
-    background-color: #dedede;
-    color: white !important;
-}
-.bg {
-    
-    background-color: rgba(255,171,64) !important;
+    justify-content: space-between;
+    border-bottom: 1px solid #344955; 
 }
 
-
-.bg p {
-    color: white !important;
+.cell-content {
+    display: flex;
+    justify-content: space-between;
 }
 
 body  {
-    font-family: 'Roboto';
-}
-
-
-h2, h4 {
-    color: black;
+    font-family: 'Roboto' !important;
 }
 
 .mdl-layout__header .mdl-layout__drawer-button {
@@ -37,8 +30,10 @@ h2, h4 {
 }
 
 .page-content {
-    padding: 1em;
-    background-color: #fefefe;
+    background-color: #344955;
+}
+.mdl-layout__header, .mdl-layout__content {
+    background-color: #344955 !important;
 }
 
 .green {
@@ -50,15 +45,13 @@ h2, h4 {
     color: red;
 }
 
-.tools {
-    padding: 1em;
-    color: #ffffff;
-}
-
 .rate {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1em;
+    color: white;
+    margin-bottom: 2em;
 }
 
 .mdl-progress {
@@ -66,24 +59,8 @@ h2, h4 {
 }
 .disclaimer {
     margin-top: 1em;
+    color: white;
+
 }
 
-    .card {
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            font-size: 16px;
-            font-weight: 400;
-            min-height:auto;
-            overflow: hidden;
-            width: 100%;
-            z-index: 1;
-            position: relative;
-            background: #fff;
-            border-radius: 2px;
-            box-sizing: border-box;
-      
-    }
+   

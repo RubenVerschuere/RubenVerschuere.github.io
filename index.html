@@ -9,9 +9,8 @@
   <link rel="stylesheet" href="style/style.css">
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-orange.min.css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-
   <script src="sw.js"></script>
 </head>
 
@@ -29,7 +28,7 @@
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation. We hide it in small screens. -->
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-         <!-- <a class="mdl-navigation__link" href="">Link</a>
+          <!-- <a class="mdl-navigation__link" href="">Link</a>
           <a class="mdl-navigation__link" href="">Link</a>
           <a class="mdl-navigation__link" href="">Link</a>
           <a class="mdl-navigation__link" href="">Link</a>-->
@@ -39,34 +38,40 @@
     <div class="mdl-layout__drawer">
       <span class="mdl-layout-title">Bitcoin</span>
       <nav class="mdl-navigation">
-       <!-- <a class="mdl-navigation__link" href="">Link</a>
+        <!-- <a class="mdl-navigation__link" href="">Link</a>
         <a class="mdl-navigation__link" href="">Link</a>
         <a class="mdl-navigation__link" href="">Link</a>
         <a class="mdl-navigation__link" href="">Link</a>-->
       </nav>
     </div>
     <main class="mdl-layout__content">
-        <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+      <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
 
       <div class="page-content">
-
-        <div class="rate bg card mdl-shadow--2dp">
-
-          <div class="list">
-
-          </div>
+        <div class="rate">
+          <div><img src="images/icons/icon-72x72.png" style="height: 50px; width: auto; margin-bottom: 1em;"alt=""></div>
+          <div style="font-size: 1.5em; font-weight: bold;">€2.405</div>
+          <div></div>
+          <div>Last update: <span style="color: #f9aa33; font-weight: bold;" class="updated"></span> </div>
         </div>
-
-        <div class="card mdl-shadow--2dp disclaimer">
-
-        </div>
-        <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
-          <div class="mdl-snackbar__text"></div>
-          <button class="mdl-snackbar__action" type="button"></button>
-        </div>
+        <div class="list">
+       
       </div>
-    </main>
-    <footer class="mdl-mini-footer">
+        
+      </div>
+
+
+
+      <div class=" disclaimer mdl-cell">
+
+      </div>
+      <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+      </div>
+  </div>
+  </main>
+  <!--<footer class="mdl-mini-footer">
       <div class="mdl-mini-footer__left-section">
         <div class="mdl-logo">	&copy; Ruben Verschuere </div>
         <ul class="mdl-mini-footer__link-list">
@@ -74,7 +79,7 @@
           <li><a href="#">Privacy & Terms</a></li>
         </ul>
       </div>
-    </footer>
+    </footer>-->
   </div>
 
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
