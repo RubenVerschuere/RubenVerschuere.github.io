@@ -139,7 +139,7 @@ createSymbol = (json) => {
         <div class="symbol">
         <div>
 
-            <p>${json.disclaimer}</p>
+            <small>${json.disclaimer}</small>
            
      
          </div>
