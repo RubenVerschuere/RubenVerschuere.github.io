@@ -1,8 +1,8 @@
 {
   "name": "Noictib",
   "short_name": "CCC",
-  "theme_color": "#7fffd4",
-  "background_color": "#ffffff",
+  "theme_color": "#344955",
+  "background_color": "#232f34",
   "display": "standalone",
   "orientation": "portrait",
   "Scope": ".",
