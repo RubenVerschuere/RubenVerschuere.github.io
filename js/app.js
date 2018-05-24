@@ -73,14 +73,13 @@ updateCurrencies = async () => {
 
 checkLocalStorage = () => {
     if (localStorage.getItem("currency") === null) {
+        let dom = document.getElementById("EUR");
+        dom.classList.add('active');
         return false;
     } else {
         let currency = JSON.parse(localStorage.getItem('currency'));
-        console.log(currency);
         let dom = document.getElementById(currency.currency);
-        console.log(dom);
         dom.classList.add('active');
-        console.log(dom);
         return true;
     }
 }
