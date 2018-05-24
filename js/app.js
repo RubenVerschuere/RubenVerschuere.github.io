@@ -4,15 +4,14 @@ const update = document.querySelector('.updated');
 const rate = document.querySelector('.rate-amount');
 
 let eur = [];
-let gbd=[];
-let usd=[];
+let gbd = [];
+let usd = [];
 
 window.addEventListener('load', e => {
     updateCurrencies();
     setInterval(function () {
         updateCurrencies()
     }, 5000);
-    addEventListeners();
 });
 
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -30,31 +29,60 @@ window.addEventListener('beforeinstallprompt', (e) => {
         });
 });
 
-function addEventListeners() {
-    const cells = document.querySelectorAll('.cell');
+function addEventListeners(json) {
+    let cells = document.querySelectorAll(".cell");
     cells.forEach(element => {
-        element.addEventListener('click', function () {
-
+      
+        element.addEventListener("click", function () {
+            cells.forEach(elementToDelete => {
+                elementToDelete.classList.remove('active');
+            });
+            let currency = {
+                'currency': element.dataset.currency
+            }
+            localStorage.setItem('currency', JSON.stringify(currency));
+            rate.innerHTML = `${json[element.dataset.currency].symbol} ${json[element.dataset.currency].rate}`
+            element.classList.add('active');
         });
     });
 }
+
 
 updateCurrencies = async () => {
     updateLoader(true);
     const res = await fetch(`https://api.coindesk.com/v1/bpi/currentprice.json`);
     const json = await res.json();
-    console.log(json);
     let title = document.querySelector(".mdl-layout-title");
     title.innerHTML = json.chartName
     disclaimer.innerHTML = createSymbol(json);
     list.innerHTML = createCurrencie(json.bpi);
     update.innerHTML = new Date(json.time.updated).toLocaleTimeString();
-    rate.innerHTML = `${json.bpi.EUR.symbol} ${json.bpi.EUR.rate}`
+  
     checkArrays(json.bpi);
+    addEventListeners(json.bpi);
+    if (checkLocalStorage()) {
+        let currency = JSON.parse(localStorage.getItem('currency'));
+        rate.innerHTML = `${json.bpi[currency.currency].symbol} ${json.bpi[currency.currency].rate}`
+    } else {
+        rate.innerHTML = `${json.bpi.EUR.symbol} ${json.bpi.EUR.rate}`
+    }
     setTimeout(function () {
-        //console.log("updated: " + new Date().toLocaleDateString() + " / " + new Date().toLocaleTimeString());
         updateLoader(false);
     }, 1500);
+}
+
+checkLocalStorage = () => {
+    if (localStorage.getItem("currency") === null) {
+        return false;
+    } else {
+        let currency = JSON.parse(localStorage.getItem('currency'));
+        console.log(currency);
+        let dom = document.getElementById(currency.currency);
+        console.log(dom);
+        dom.classList.add('active');
+        console.log(dom);
+        return true;
+    }
 }
 
 checkArrays = (json) => {
@@ -70,14 +98,13 @@ checkArrays = (json) => {
             eurRate.classList.add('red');
         }
     }
-    console.log(eur);
     if (gbd.length < 2) {
         gbd.push(json.GBP.rate);
     } else {
         gbd.reverse();
         gbd[1] = json.GBP.rate;
         if (gbd[1] > gbd[0]) {
-            let gbdrRate = document.querySelector('.gbdrate');
+            let gbdRate = document.querySelector('.gbdrate');
             gbdRate.classList.add('green');
         } else if (gbd[1] < gbd[0]) {
             let gbdRate = document.querySelector('.gbdrate');
@@ -126,7 +153,7 @@ createSymbol = (json) => {
 
 createCurrencie = (json) => {
     return `
-    <div class="cell mdl-cell mdl-cell--12-col ">
+    <div class="cell mdl-cell mdl-cell--12-col " id="${json.EUR.code}" data-currency="${json.EUR.code}">
     <div class="cell-header">
       <div class="padding" style="display: flex; flex-direction: row; align-items: center;">
         <div style="color: #f9aa33;  font-size: 2em;">
@@ -145,7 +172,7 @@ createCurrencie = (json) => {
     </div>
 
   </div>
-  <div class="cell mdl-cell mdl-cell--12-col ">
+  <div class="cell mdl-cell mdl-cell--12-col " id="${json.GBP.code}" data-currency="${json.GBP.code}">
   <div class="cell-header">
     <div class="padding" style="display: flex; flex-direction: row; align-items: center;">
       <div style="color: #f9aa33;  font-size: 2em;"">
@@ -164,7 +191,7 @@ createCurrencie = (json) => {
   </div>
 
 </div>
-<div class="cell mdl-cell mdl-cell--12-col ">
+<div class="cell mdl-cell mdl-cell--12-col"  id="${json.USD.code}" data-currency="${json.USD.code}" >
 <div class="cell-header">
   <div class="padding" style="display: flex; flex-direction: row; align-items: center;">
     <div style="color: #f9aa33;  font-size: 2em;"">
