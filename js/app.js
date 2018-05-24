@@ -1,8 +1,11 @@
 const disclaimer = document.querySelector('.disclaimer');
 const list = document.querySelector('.list');
 const update = document.querySelector('.updated');
+const rate = document.querySelector('.rate-amount');
 
 let eur = [];
+let gbd=[];
+let usd=[];
 
 window.addEventListener('load', e => {
     updateCurrencies();
@@ -45,6 +48,7 @@ updateCurrencies = async () => {
     disclaimer.innerHTML = createSymbol(json);
     list.innerHTML = createCurrencie(json.bpi);
     update.innerHTML = new Date(json.time.updated).toLocaleTimeString();
+    rate.innerHTML = `${json.bpi.EUR.symbol} ${json.bpi.EUR.rate}`
     checkArrays(json.bpi);
     setTimeout(function () {
         //console.log("updated: " + new Date().toLocaleDateString() + " / " + new Date().toLocaleTimeString());
@@ -56,18 +60,42 @@ checkArrays = (json) => {
     if (eur.length < 2) {
         eur.push(json.EUR.rate);
     } else {
+        let eurRate = document.querySelector('.eurrate');
         eur.reverse();
         eur[1] = json.EUR.rate;
         if (eur[1] > eur[0]) {
-            let eurRate = document.querySelector('.eurrate');
             eurRate.classList.add('green');
         } else if (eur[1] < eur[0]) {
-            let eurRate = document.querySelector('.eurrate');
             eurRate.classList.add('red');
         }
     }
-
     console.log(eur);
+    if (gbd.length < 2) {
+        gbd.push(json.GBP.rate);
+    } else {
+        gbd.reverse();
+        gbd[1] = json.GBP.rate;
+        if (gbd[1] > gbd[0]) {
+            let gbdrRate = document.querySelector('.gbdrate');
+            gbdRate.classList.add('green');
+        } else if (gbd[1] < gbd[0]) {
+            let gbdRate = document.querySelector('.gbdrate');
+            gbdRate.classList.add('red');
+        }
+    }
+    if (usd.length < 2) {
+        usd.push(json.USD.rate);
+    } else {
+        usd.reverse();
+        usd[1] = json.USD.rate;
+        if (usd[1] > usd[0]) {
+            let usdRate = document.querySelector('.usdrate');
+            usdRate.classList.add('green');
+        } else if (usd[1] < usd[0]) {
+            let usdRate = document.querySelector('.usdrate');
+            usdRate.classList.add('red');
+        }
+    }
 }
 
 updateLoader = (on) => {
@@ -127,7 +155,7 @@ createCurrencie = (json) => {
         <div>Bitcoin</div>
       </div>
     </div>
-    <div class="padding"> ${json.GBP.symbol} ${json.GBP.rate}</div>
+    <div class="padding gbdrate"> ${json.GBP.symbol} ${json.GBP.rate}</div>
   </div>
   <div class="cell-content">
     <div class="padding">1</div>
@@ -146,7 +174,7 @@ createCurrencie = (json) => {
       <div>Bitcoin</div>
     </div>
   </div>
-  <div class="padding"> ${json.USD.symbol} ${json.USD.rate}</div>
+  <div class="padding usdrate"> ${json.USD.symbol} ${json.USD.rate}</div>
 </div>
 <div class="cell-content">
   <div class="padding">1</div>
