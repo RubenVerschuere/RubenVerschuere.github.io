@@ -14,7 +14,7 @@ var urls = [
     'js/onlineDetection.js'
 ]
 
-if('serviceWorker' in navigator && 'PushManager' in window){
+if('serviceWorker' in navigator){
     console.log('Service Worker and Push is supported');
     try {
         navigator.serviceWorker.register('sw.js');
@@ -23,10 +23,6 @@ if('serviceWorker' in navigator && 'PushManager' in window){
         console.log('SW failed to register');
     }
 }
-else {
-    console.warn('Push messaging is not supported');
-}
-
 
 
 self.addEventListener('install', function(event){
